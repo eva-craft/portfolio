@@ -4,28 +4,41 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Eva Craft — Геймдевелопер · Портфолио</title>
+<link rel="icon" type="image/png" href="logo.png">
+<link rel="apple-touch-icon" href="logo.png">
 <style>
-  /* ===== БАЗА ===== */
+  /* ===== БАЗА — ПАЛИТРА ПОД ЛОГОТИП ===== */
   :root{
-    --bg-0:#0b0a1a;
-    --bg-1:#12102a;
-    --bg-2:#1a1638;
-    --card:#161230;
-    --card-hover:#1d1840;
-    --border:rgba(255,255,255,.08);
-    --border-strong:rgba(255,255,255,.16);
-    --text:#e8e6f5;
-    --muted:#a9a4d4;
-    --dim:#6f6a92;
-    --purple:#7b3fe4;
-    --pink:#e94fa1;
-    --blue:#38bdf8;
-    --green:#19d36b;
-    --gold:#facc15;
-    --grad:linear-gradient(135deg,#7b3fe4,#e94fa1);
-    --grad-text:linear-gradient(135deg,#c084fc,#f472b6,#38bdf8);
+    /* фоны: глубокий графит с фиолетовым подтоном */
+    --bg-0:#15131f;
+    --bg-1:#1a1728;
+    --bg-2:#221e33;
+    --card:#1e1a2e;
+    --card-hover:#262139;
+
+    /* границы */
+    --border:rgba(139,111,214,.16);
+    --border-strong:rgba(139,111,214,.34);
+
+    /* текст */
+    --text:#ece9f7;
+    --muted:#b0a9c9;
+    --dim:#7d7599;
+
+    /* основные цвета логотипа */
+    --violet-deep:#5b3a9e;     /* тёмно-фиолетовый из знака */
+    --violet-mid:#7a5cc4;      /* средний фиолетовый */
+    --violet-light:#a78bec;    /* светлый фиолетовый */
+    --graphite:#2d2b3a;        /* графит из букв "EVA CRAFT" */
+    --white:#ffffff;
+
+    /* градиенты */
+    --grad:linear-gradient(135deg,#5b3a9e,#8b6fd6);
+    --grad-text:linear-gradient(135deg,#a78bec,#c4b0f5,#8b6fd6);
+    --grad-line:linear-gradient(90deg,#5b3a9e,#a78bec);
+
     --radius:18px;
-    --shadow:0 20px 60px rgba(0,0,0,.45);
+    --shadow:0 20px 60px rgba(10,8,20,.55);
   }
   *{margin:0;padding:0;box-sizing:border-box;}
   html{scroll-behavior:smooth;}
@@ -38,45 +51,50 @@
     -webkit-font-smoothing:antialiased;
   }
   a{color:inherit;text-decoration:none;}
-  ::selection{background:rgba(233,79,161,.35);color:#fff;}
+  ::selection{background:rgba(139,111,214,.4);color:#fff;}
 
   /* ===== ФОНОВОЕ СВЕЧЕНИЕ ===== */
   .bg-glow{
     position:fixed;inset:0;z-index:-2;pointer-events:none;
     background:
-      radial-gradient(ellipse 60% 40% at 15% 10%, rgba(123,63,228,.22), transparent 60%),
-      radial-gradient(ellipse 50% 40% at 85% 20%, rgba(233,79,161,.18), transparent 60%),
-      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(56,189,248,.14), transparent 60%),
-      linear-gradient(180deg,#0b0a1a 0%,#0e0c22 50%,#0b0a1a 100%);
+      radial-gradient(ellipse 60% 40% at 15% 10%, rgba(91,58,158,.32), transparent 60%),
+      radial-gradient(ellipse 50% 40% at 85% 20%, rgba(139,111,214,.20), transparent 60%),
+      radial-gradient(ellipse 70% 50% at 50% 100%, rgba(122,92,196,.16), transparent 60%),
+      linear-gradient(180deg,#15131f 0%,#191627 50%,#15131f 100%);
   }
   .bg-grid{
-    position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.35;
+    position:fixed;inset:0;z-index:-1;pointer-events:none;opacity:.3;
     background-image:
-      linear-gradient(rgba(255,255,255,.03) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(255,255,255,.03) 1px, transparent 1px);
+      linear-gradient(rgba(167,139,236,.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(167,139,236,.05) 1px, transparent 1px);
     background-size:48px 48px;
     mask-image:radial-gradient(ellipse 80% 70% at 50% 30%, #000 40%, transparent 100%);
     -webkit-mask-image:radial-gradient(ellipse 80% 70% at 50% 30%, #000 40%, transparent 100%);
   }
 
-  /* ===== КОНТЕЙНЕР ===== */
   .wrap{max-width:1120px;margin:0 auto;padding:0 24px;}
 
   /* ===== ШАПКА ===== */
-  header.hero{
-    position:relative;
-    padding:90px 0 60px;
-    text-align:center;
-  }
+  header.hero{position:relative;padding:90px 0 60px;text-align:center;}
+
   .avatar{
-    width:110px;height:110px;border-radius:50%;
+    width:112px;height:112px;border-radius:50%;
     margin:0 auto 22px;
-    background:var(--grad);
+    background:#f5f2ff;                       /* светлая подложка под лого */
     display:flex;align-items:center;justify-content:center;
-    font-size:44px;font-weight:800;color:#fff;
-    box-shadow:0 0 0 4px rgba(255,255,255,.06), 0 0 60px rgba(233,79,161,.55);
+    box-shadow:
+      0 0 0 4px rgba(139,111,214,.18),
+      0 0 60px rgba(91,58,158,.65),
+      0 0 100px rgba(139,111,214,.35);
     animation:float 6s ease-in-out infinite;
     overflow:hidden;
+  }
+  .avatar img{
+    width:100%;height:100%;
+    object-fit:contain;
+    border-radius:50%;
+    display:block;
+    transform:scale(1.06);
   }
   @keyframes float{
     0%,100%{transform:translateY(0);}
@@ -107,52 +125,46 @@
   }
   .badge{
     padding:7px 16px;border-radius:100px;
-    background:rgba(255,255,255,.05);
+    background:rgba(139,111,214,.08);
     border:1px solid var(--border);
     font-size:13px;color:var(--muted);
     backdrop-filter:blur(6px);
   }
-  .contact-row{
-    display:flex;flex-wrap:wrap;gap:12px;
-    justify-content:center;
-  }
+  .contact-row{display:flex;flex-wrap:wrap;gap:12px;justify-content:center;}
   .contact-btn{
     display:inline-flex;align-items:center;gap:8px;
     padding:11px 22px;border-radius:100px;
     font-size:14px;font-weight:600;
     border:1px solid var(--border-strong);
-    background:rgba(255,255,255,.04);
+    background:rgba(139,111,214,.06);
     transition:all .25s ease;
     white-space:nowrap;
   }
   .contact-btn:hover{
-    background:rgba(255,255,255,.09);
-    border-color:rgba(255,255,255,.3);
+    background:rgba(139,111,214,.14);
+    border-color:var(--violet-light);
     transform:translateY(-2px);
-    box-shadow:0 10px 30px rgba(0,0,0,.4);
+    box-shadow:0 10px 30px rgba(91,58,158,.35);
   }
   .contact-btn.primary{
     background:var(--grad);
     border:none;
-    box-shadow:0 8px 28px rgba(233,79,161,.4);
+    color:#fff;
+    box-shadow:0 8px 28px rgba(91,58,158,.55);
   }
   .contact-btn.primary:hover{
-    box-shadow:0 12px 36px rgba(233,79,161,.6);
+    box-shadow:0 12px 36px rgba(122,92,196,.65);
   }
 
   /* ===== СЕКЦИИ ===== */
   section{padding:60px 0;}
-  .section-head{
-    display:flex;align-items:center;gap:14px;
-    margin-bottom:36px;
-  }
+  .section-head{display:flex;align-items:center;gap:14px;margin-bottom:36px;}
   .section-head .icon{
     width:44px;height:44px;border-radius:12px;
-    background:rgba(123,63,228,.15);
-    border:1px solid rgba(123,63,228,.3);
+    background:rgba(91,58,158,.18);
+    border:1px solid rgba(139,111,214,.35);
     display:flex;align-items:center;justify-content:center;
-    font-size:22px;
-    flex-shrink:0;
+    font-size:22px;flex-shrink:0;
   }
   .section-head h2{
     font-size:clamp(24px,4vw,34px);
@@ -160,30 +172,29 @@
   }
   .section-head .line{
     flex:1;height:1px;
-    background:linear-gradient(90deg,rgba(255,255,255,.15),transparent);
+    background:var(--grad-line);
+    opacity:.6;
+    -webkit-mask-image:linear-gradient(90deg,#000,transparent);
+    mask-image:linear-gradient(90deg,#000,transparent);
   }
 
   /* ===== О СЕБЕ ===== */
-  .about p{
-    font-size:16.5px;color:var(--muted);
-    max-width:820px;
-  }
+  .about p{font-size:16.5px;color:var(--muted);max-width:820px;}
   .about p + p{margin-top:16px;}
   .about strong{color:var(--text);font-weight:600;}
-  .about .accent{color:var(--pink);}
+  .about .accent{color:var(--violet-light);font-weight:600;}
 
   /* ===== ФЛАГМАН ===== */
   .flagship{
     background:
-      radial-gradient(ellipse 70% 100% at 0% 0%, rgba(123,63,228,.18), transparent 60%),
-      radial-gradient(ellipse 60% 100% at 100% 100%, rgba(233,79,161,.14), transparent 60%),
+      radial-gradient(ellipse 70% 100% at 0% 0%, rgba(91,58,158,.28), transparent 60%),
+      radial-gradient(ellipse 60% 100% at 100% 100%, rgba(139,111,214,.16), transparent 60%),
       var(--card);
     border:1px solid var(--border);
     border-radius:var(--radius);
     padding:40px;
     box-shadow:var(--shadow);
-    position:relative;
-    overflow:hidden;
+    position:relative;overflow:hidden;
   }
   .flagship::before{
     content:'';position:absolute;top:0;left:0;right:0;height:3px;
@@ -192,42 +203,37 @@
   .flagship .tag{
     display:inline-flex;align-items:center;gap:6px;
     padding:5px 14px;border-radius:100px;
-    background:rgba(250,204,21,.12);
-    border:1px solid rgba(250,204,21,.35);
-    color:var(--gold);font-size:12px;font-weight:700;
+    background:rgba(139,111,214,.14);
+    border:1px solid rgba(139,111,214,.45);
+    color:var(--violet-light);
+    font-size:12px;font-weight:700;
     letter-spacing:.5px;text-transform:uppercase;
     margin-bottom:16px;
   }
   .flagship h3{
     font-size:clamp(26px,4.5vw,38px);
-    font-weight:800;letter-spacing:-.5px;
-    margin-bottom:6px;
+    font-weight:800;letter-spacing:-.5px;margin-bottom:6px;
   }
-  .flagship .sub{
-    color:var(--muted);font-size:15px;margin-bottom:22px;
-  }
-  .flagship .sub span{color:var(--text);}
-  .links-row{
-    display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;
-  }
+  .flagship .sub{color:var(--muted);font-size:15px;margin-bottom:22px;}
+  .flagship .sub span{color:var(--violet-light);}
+  .links-row{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:28px;}
   .link-pill{
     display:inline-flex;align-items:center;gap:7px;
     padding:8px 16px;border-radius:100px;
-    background:rgba(255,255,255,.05);
+    background:rgba(139,111,214,.07);
     border:1px solid var(--border);
     font-size:13.5px;color:var(--muted);
     transition:all .2s;
   }
   .link-pill:hover{
-    background:rgba(255,255,255,.1);
+    background:rgba(139,111,214,.16);
     border-color:var(--border-strong);
     color:var(--text);
     transform:translateY(-1px);
   }
   .flagship h4{
     font-size:16px;font-weight:700;
-    margin:26px 0 12px;
-    color:var(--text);
+    margin:26px 0 12px;color:var(--text);
     display:flex;align-items:center;gap:8px;
   }
   .flagship h4::before{
@@ -235,16 +241,18 @@
     background:var(--grad);
   }
   .flagship p{font-size:15px;color:var(--muted);}
-  .feat-list{
-    list-style:none;display:grid;gap:10px;
+  .flagship code{
+    font-family:'Consolas','Monaco',monospace;
+    font-size:.9em;
+    background:rgba(139,111,214,.14);
+    color:var(--violet-light);
+    padding:1px 6px;border-radius:5px;
   }
-  .feat-list li{
-    position:relative;padding-left:24px;
-    font-size:14.5px;color:var(--muted);
-  }
+  .feat-list{list-style:none;display:grid;gap:10px;}
+  .feat-list li{position:relative;padding-left:24px;font-size:14.5px;color:var(--muted);}
   .feat-list li::before{
     content:'✦';position:absolute;left:0;
-    color:var(--pink);font-size:13px;
+    color:var(--violet-light);font-size:13px;
   }
   .feat-list li strong{color:var(--text);font-weight:600;}
 
@@ -260,122 +268,85 @@
     border-radius:var(--radius);
     padding:0 0 30px;
     transition:all .3s cubic-bezier(.2,.8,.2,1);
-    position:relative;
-    overflow:hidden;
-    display:flex;
-    flex-direction:column;
+    position:relative;overflow:hidden;
+    display:flex;flex-direction:column;
   }
   .project-card::before{
     content:'';position:absolute;top:0;left:0;right:0;height:3px;
     background:var(--grad-text);
-    opacity:0;transition:opacity .3s;
-    z-index:2;
+    opacity:0;transition:opacity .3s;z-index:2;
   }
   .project-card:hover{
     transform:translateY(-6px);
     border-color:var(--border-strong);
-    box-shadow:0 24px 60px rgba(0,0,0,.5);
+    box-shadow:0 24px 60px rgba(10,8,20,.65);
     background:var(--card-hover);
   }
   .project-card:hover::before{opacity:1;}
-  .project-card .p-body{
-    padding:24px 30px 0;
-    display:flex;
-    flex-direction:column;
-    flex:1;
-  }
+  .project-card .p-body{padding:24px 30px 0;display:flex;flex-direction:column;flex:1;}
   .project-card .p-icon{
     width:56px;height:56px;border-radius:14px;
-    background:rgba(123,63,228,.15);
-    border:1px solid rgba(123,63,228,.3);
+    background:rgba(91,58,158,.2);
+    border:1px solid rgba(139,111,214,.35);
     display:flex;align-items:center;justify-content:center;
     font-size:26px;margin-bottom:18px;
   }
-  .project-card h3{
-    font-size:22px;font-weight:800;
-    letter-spacing:-.3px;margin-bottom:4px;
-  }
-  .project-card .p-sub{
-    font-size:13.5px;color:var(--dim);
-    margin-bottom:16px;
-  }
-  .project-card p{
-    font-size:14.5px;color:var(--muted);
-    margin-bottom:18px;
-  }
-  .project-card .p-tags{
-    display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;
-  }
+  .project-card h3{font-size:22px;font-weight:800;letter-spacing:-.3px;margin-bottom:4px;}
+  .project-card .p-sub{font-size:13.5px;color:var(--dim);margin-bottom:16px;}
+  .project-card p{font-size:14.5px;color:var(--muted);margin-bottom:18px;}
+  .project-card .p-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px;}
   .p-tag{
     font-size:11.5px;padding:4px 10px;border-radius:100px;
-    background:rgba(56,189,248,.1);
-    border:1px solid rgba(56,189,248,.25);
-    color:var(--blue);
+    background:rgba(139,111,214,.1);
+    border:1px solid rgba(139,111,214,.3);
+    color:var(--violet-light);
   }
-  .project-card .p-links{
-    display:flex;flex-wrap:wrap;gap:8px;
-    margin-top:auto;
-  }
+  .project-card .p-links{display:flex;flex-wrap:wrap;gap:8px;margin-top:auto;}
   .p-link{
     display:inline-flex;align-items:center;gap:6px;
     padding:7px 14px;border-radius:100px;
     font-size:12.5px;font-weight:600;
-    background:rgba(255,255,255,.05);
+    background:rgba(139,111,214,.07);
     border:1px solid var(--border);
     transition:all .2s;
   }
   .p-link:hover{
-    background:rgba(255,255,255,.1);
+    background:rgba(139,111,214,.16);
     border-color:var(--border-strong);
   }
   .p-link.accent{
-    background:rgba(233,79,161,.12);
-    border-color:rgba(233,79,161,.35);
-    color:var(--pink);
+    background:rgba(91,58,158,.28);
+    border-color:rgba(139,111,214,.5);
+    color:#d8c9ff;
   }
   .p-link.accent:hover{
-    background:rgba(233,79,161,.22);
+    background:rgba(91,58,158,.45);
+    border-color:var(--violet-light);
   }
 
   /* ===== СКРИНШОТЫ ===== */
   .shot{
-    width:100%;
-    border-radius:14px;
+    width:100%;border-radius:14px;
     border:1px solid var(--border-strong);
-    margin-bottom:22px;
-    display:block;
-    object-fit:cover;
-    box-shadow:0 12px 34px rgba(0,0,0,.45);
+    margin-bottom:22px;display:block;object-fit:cover;
+    box-shadow:0 12px 34px rgba(10,8,20,.55);
     transition:transform .3s ease, box-shadow .3s ease;
   }
   .shot:hover{
     transform:scale(1.015);
-    box-shadow:0 18px 44px rgba(233,79,161,.28);
+    box-shadow:0 18px 44px rgba(91,58,158,.5);
   }
-  .flagship .shot{
-    margin-top:4px;
-    max-height:420px;
-  }
-  /* обложка сверху карточки проекта */
+  .flagship .shot{margin-top:4px;max-height:420px;}
   .cover{
-    width:100%;
-    height:190px;
-    object-fit:cover;
-    display:block;
+    width:100%;height:190px;object-fit:cover;display:block;
     border-bottom:1px solid var(--border);
     transition:transform .4s ease;
   }
-  .project-card:hover .cover{
-    transform:scale(1.04);
-  }
-  .cover-wrap{
-    overflow:hidden;
-    position:relative;
-  }
+  .project-card:hover .cover{transform:scale(1.04);}
+  .cover-wrap{overflow:hidden;position:relative;}
   .cover-wrap::after{
-    content:'';
-    position:absolute;inset:0;
-    background:linear-gradient(180deg,transparent 55%,rgba(11,10,26,.55));
+    content:'';position:absolute;inset:0;
+    background:linear-gradient(180deg,transparent 55%,rgba(21,19,31,.7));
     pointer-events:none;
   }
 
@@ -388,8 +359,7 @@
   .skill-card{
     background:var(--card);
     border:1px solid var(--border);
-    border-radius:16px;
-    padding:24px;
+    border-radius:16px;padding:24px;
     transition:border-color .25s, transform .25s;
   }
   .skill-card:hover{
@@ -399,31 +369,25 @@
   .skill-card h4{
     font-size:14px;font-weight:700;
     text-transform:uppercase;letter-spacing:1px;
-    color:var(--pink);margin-bottom:14px;
+    color:var(--violet-light);margin-bottom:14px;
     display:flex;align-items:center;gap:8px;
   }
   .skill-card h4 .s-ico{font-size:18px;}
-  .skill-card ul{
-    list-style:none;display:grid;gap:8px;
-  }
-  .skill-card li{
-    font-size:14px;color:var(--muted);
-    padding-left:18px;position:relative;
-  }
+  .skill-card ul{list-style:none;display:grid;gap:8px;}
+  .skill-card li{font-size:14px;color:var(--muted);padding-left:18px;position:relative;}
   .skill-card li::before{
     content:'▸';position:absolute;left:0;
-    color:var(--purple);font-size:12px;
+    color:var(--violet-mid);font-size:12px;
   }
 
   /* ===== ПРИМЕЧАНИЕ ===== */
   .note{
     background:
-      radial-gradient(ellipse 80% 120% at 0% 0%, rgba(56,189,248,.1), transparent 60%),
+      radial-gradient(ellipse 80% 120% at 0% 0%, rgba(139,111,214,.14), transparent 60%),
       var(--card);
     border:1px solid var(--border);
     border-radius:var(--radius);
-    padding:34px 38px;
-    position:relative;
+    padding:34px 38px;position:relative;
   }
   .note::before{
     content:'📌';position:absolute;top:-14px;left:30px;
@@ -433,9 +397,7 @@
     display:flex;align-items:center;justify-content:center;
     font-size:18px;
   }
-  .note h3{
-    font-size:18px;font-weight:700;margin-bottom:12px;
-  }
+  .note h3{font-size:18px;font-weight:700;margin-bottom:12px;}
   .note p{font-size:15px;color:var(--muted);}
   .note strong{color:var(--text);}
 
@@ -455,14 +417,9 @@
     display:flex;flex-wrap:wrap;gap:20px;
     justify-content:center;margin-bottom:18px;
   }
-  footer .f-links a{
-    font-size:14px;color:var(--muted);
-    transition:color .2s;
-  }
-  footer .f-links a:hover{color:var(--pink);}
-  footer .f-copy{
-    font-size:13px;color:var(--dim);
-  }
+  footer .f-links a{font-size:14px;color:var(--muted);transition:color .2s;}
+  footer .f-links a:hover{color:var(--violet-light);}
+  footer .f-copy{font-size:13px;color:var(--dim);}
 
   /* ===== АНИМАЦИЯ ПОЯВЛЕНИЯ ===== */
   .reveal{
@@ -485,7 +442,7 @@
   }
   @media (max-width:420px){
     .wrap{padding:0 16px;}
-    .avatar{width:90px;height:90px;font-size:36px;}
+    .avatar{width:92px;height:92px;}
     .cover{height:140px;}
   }
 </style>
@@ -500,7 +457,7 @@
   <!-- ===== ШАПКА ===== -->
   <header class="hero">
     <div class="avatar">
-      <img src="logo.png" alt="Eva Craft" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">
+      <img src="logo.png" alt="Eva Craft — логотип" width="112" height="112" loading="eager">
     </div>
     <h1>Eva Craft</h1>
     <div class="role">Инди-разработчик · JavaScript · Геймдизайн</div>
@@ -566,7 +523,6 @@
         <span class="link-pill">Sole Developer</span>
       </div>
 
-      <!-- СКРИНШОТ ФЛАГМАНА -->
       <img class="shot" src="1q.png" alt="Скриншот игры «Психиатр»">
 
       <h4>О проекте</h4>
@@ -616,7 +572,6 @@
 
     <div class="projects-grid">
 
-      <!-- Wizardrunner -->
       <div class="project-card">
         <div class="cover-wrap">
           <img class="cover" src="2q.png" alt="Скриншот игры Wizardrunner">
@@ -625,13 +580,11 @@
           <div class="p-icon">🧙</div>
           <h3>Wizardrunner</h3>
           <div class="p-sub">Голосовой раннер · itch.io (WebGL) · Android (APK)</div>
-
           <p>
             Бесконечный раннер с магом, управляемым голосом. Игрок произносит заклинания,
             чтобы активировать способности: бесплотность, уничтожение препятствий, магнетизм,
             откат во времени, ураган и левитацию. 7 уровней с уникальными фонами и стилистикой препятствий.
           </p>
-
           <div class="p-tags">
             <span class="p-tag">JavaScript</span>
             <span class="p-tag">Canvas</span>
@@ -639,7 +592,6 @@
             <span class="p-tag">Capacitor</span>
             <span class="p-tag">Android Studio</span>
           </div>
-
           <div class="p-links">
             <a class="p-link accent" href="https://evacraft.itch.io/wizardrunner" target="_blank" rel="noopener">🌐 Играть</a>
             <a class="p-link" href="https://github.com/eva-craft/Wizardrunner" target="_blank" rel="noopener">💻 GitHub</a>
@@ -647,7 +599,6 @@
         </div>
       </div>
 
-      <!-- Оперный Певец -->
       <div class="project-card">
         <div class="cover-wrap">
           <img class="cover" src="3q.png" alt="Скриншот игры «Оперный Певец»">
@@ -656,20 +607,17 @@
           <div class="p-icon">🎭</div>
           <h3>Оперный Певец</h3>
           <div class="p-sub">Музыкальный платформер · itch.io (WebGL)</div>
-
           <p>
             Музыкальный платформер, где игрок управляет оперным певцом и атакует врагов нотами.
             21 опера — от «Руслана и Людмилы» до «Валькирии» — каждая с тремя этапами и уникальным
             визуальным стилем. Три типа голоса: тенор, баритон, бас.
           </p>
-
           <div class="p-tags">
             <span class="p-tag">JavaScript</span>
             <span class="p-tag">Canvas</span>
             <span class="p-tag">Web Audio API</span>
             <span class="p-tag">Формантный синтез</span>
           </div>
-
           <div class="p-links">
             <a class="p-link accent" href="https://evacraft.itch.io/opera-singer" target="_blank" rel="noopener">🌐 Играть</a>
             <a class="p-link" href="https://github.com/eva-craft/Opera-Singer" target="_blank" rel="noopener">💻 GitHub</a>
@@ -767,7 +715,6 @@
 </div>
 
 <script>
-  // ===== ПЛАВНОЕ ПОЯВЛЕНИЕ СЕКЦИЙ =====
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
